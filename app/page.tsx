@@ -1,113 +1,216 @@
+"use client"
+
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+
+  const [copy, setCopy] = useState(false);
+  const [openIndex, setOpenIndex] = useState(null);
+  const faqs = [
+    {
+      question: "What is PIMP?",
+      answer: "PIMP stands for Positively Innovative Meme Project. It is a unique and luxurious meme coin built on the Solana blockchain, aiming to bring a touch of extravagance and creativity to the cryptocurrency world."
+    },
+    {
+      question: "Why Choose PIMP?",
+      answer: `PIMP offers unique branding, an engaged community, innovative tokenomics, governance opportunities, and rewards for active members and token owners.`
+    },
+    {
+      question: "How can I buy PIMP tokens?",
+      answer: "You can buy PIMP tokens during our presale event or on decentralized exchanges (DEX) after the official launch. Detailed instructions will be provided on our website and social media channels."
+    },
+    {
+      question: "What are the benefits of holding PIMP tokens?",
+      answer: "Holding PIMP tokens gives you access to various benefits, including staking rewards, participation in community governance, and exclusive access to NFT drops and other events."
+    },
+    {
+      question: "How can I contribute to the PIMP community?",
+      answer: "You can contribute by actively participating in our social media channels, joining discussions, providing feedback, and spreading the word about PIMP. We also encourage you to participate in our governance and decision-making processes."
+    },
+    {
+      question: "How can I stay updated on PIMP’s progress?",
+      answer: "You can stay updated by following our official social media channels, subscribing to our newsletter, and regularly visiting our website for the latest news and updates."
+    },
+    {
+      question: "Who is behind the PIMP project?",
+      answer: "The PIMP project is developed by a team of experienced professionals in blockchain, marketing, and finance."
+    }
+  ];
+
+  const toggleFAQ = (index: any) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const handleClick = () => {
+    setCopy(true);
+    navigator.clipboard.writeText('GhBoKyprtD9j1gU6zp9Qfibev3KwcoSbkXPf6HtQEH2C')
+      .then(() => {
+        setTimeout(() => {
+          setCopy(false);
+        }, 3000);
+      })
+      .catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+    <>
+      <div className="main main__first">
+        <Link href={"/lab"}>
+          <button className="btn">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              height={25}
+              src={require("../public/img/wardrobe.png")}
+              alt="wardrobe"
             />
-          </a>
+            <span>PIMP WARDROBE</span>
+          </button>
+        </Link>
+        <div className="text__wrapper">
+          <div className="text text_big">WELCOME TO THE PIMP ZONE!</div>
+          <div className="text">
+            WHERE LUXURY MEETS CRYPTO, AND STYLE KNOWS NO BOUNDS. <br />
+            BUCKLE UP, BECAUSE YOU’RE ABOUT TO RIDE THE WAVE OF OPULENCE AND
+            INNOVATION. <br />
+            GET READY TO LIVE THE PIMP LIFE!
+          </div>
+          <Link href={'https://t.me/+9Od-FxiqnxtkNWMy'} target="_blank">
+            <button className="button duration-1000">JOIN COMMUNITY</button>
+          </Link>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="main main__second">
+        <img src="/img/pimpwithmoney.png" alt="pimpwithmoney" className="main__second__pimp" />
+        <img src="/img/money.png" alt="moneyrain" className="main__second__money "/>
+        <div className="main__second__tv">
+          <div className="main__second__text">
+            <div className="main__second__header">ABOUT PIMP</div>
+            <div className="tv__text">
+              Pimpanzee(PIMP) is premier meme coin for those who appreciate a touch of extravagance and luxury in the world of cryptocurrencies. PIMP stands for Positively Innovative Meme Project. PIMP is not just another meme coin - it's a statement. Inspired by the flamboyant lifestyle and bold attitude of a pimp, our token brings a fresh perspective to the crypto world. With its eye-catching branding and unique approach, PIMP aims to captivate the imagination of investors and enthusiasts alike. At PIMP, our mission is simple: to inject flair and sophistication into the meme coin landscape. We believe in pushing the boundaries of creativity and innovation, while also fostering a supportive and inclusive community. 
+            </div>
+          </div>
+        </div>
+        <div className="text__wrapper"></div>
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="main main__fourth">
+        <div className="text__wrapper text__wrapper_second">
+        <div className="socials flex gap-24 mt-10">
+            <Link href={'https://t.me/+9Od-FxiqnxtkNWMy'} target="_blank">
+              <img 
+                src="/img/telegram.png"
+                className="h-24 duration-500 hover:opacity-40"
+              />
+            </Link>
+            <Link target="_blank" href={'https://solscan.io/token/GhBoKyprtD9j1gU6zp9Qfibev3KwcoSbkXPf6HtQEH2C'}>
+              <img 
+                src="/img/solscan.png"
+                className="h-24 duration-500 hover:opacity-40"
+              />
+            </Link>
+            <Link target="_blank" href={'#'}>
+              <img 
+                src="/img/coingecko.png"
+                className="h-24 duration-500 hover:opacity-40"
+              />
+            </Link>
+            <Link target="_blank" href={'https://www.dextools.io/app/en/solana/pair-explorer/34EdU7gsbAHACTHCedPnvgAoaeF6fgYKeg4bifPBZhdj?t=1720730476541 '}>
+              <img 
+                src="/img/dextool.png"
+                className="h-24 duration-500 hover:opacity-40"
+              />
+            </Link>
+            <Link target="_blank" href={'#'}>
+              <img 
+                src="/img/coinmarket.png"
+                className="h-24 duration-500 hover:opacity-40"
+              />
+            </Link>
+            <Link target="_blank" href={'https://dexscreener.com/solana/34edu7gsbahacthcedpnvgaoaef6fgykeg4bifpbzhdj'}>
+              <img 
+                src="/img/screener.png"
+                className="h-24 duration-500 hover:opacity-40"
+              />
+            </Link>
+            <Link target="_blank" href={'https://x.com/PIMPANZEETOKEN'}>
+              <img 
+                src="/img/twitter.png"
+                className="h-24 duration-500 hover:opacity-40"
+              />
+            </Link>
+          </div>
+        </div>
       </div>
-    </main>
+      <div className="main main__tokenomics">
+        <img src="/img/fourth.jpg" alt="handsdown" className="main__fifth__img"/>
+        <div className="tokenomics">PIMP TOKENOMICS</div>
+        <div className="token__wrapper">
+          <div className="token">GhBoKyprtD9j1gU6zp9Qfibev3KwcoSbkXPf6HtQEH2C</div>
+          <div className="copy__wrapper" onClick={handleClick}>
+            {copy ? <img src="/img/done.png" alt="done" /> : <img src="/img/copy.png" alt="copy" /> }
+          </div>
+        </div>
+        <div className="cards__wrapper">
+          <img src="/img/card1.png" alt="card"/>
+          <img src="/img/card2.png" alt="card"/>
+          <img src="/img/card3.png" alt="card"/>
+          <img src="/img/card4.png" alt="card"/>
+        </div>
+        <div className="text__wrapper text__wrapper__roadmap">
+          <div className="text__wrapper__cards">
+            PIMP ROADMAP
+          </div>
+        </div>
+      </div>
+      <div className="main main__sixth">
+        <div className="text__wrapper"></div>
+      </div>
+      <div className="main main__seventh">
+        <img src="/img/wardrobe.svg" alt="wardrobe-text"/>
+        <div className="wardrobe__text">
+          DO YOU LIKE PIMP? SHOW IT TO EVERYONE WORLDWIDE! NOW YOU CAN GENERATE YOUR OWN RANDOM AVATAR, SOON THEY WILL BE USED TO CREAETE NFT COLLECTION.
+        </div>
+        <Link href={"/lab"}>
+          <button className="btn btn__wardrobe">
+            <Image
+              height={50}
+              src={require("../public/img/wardrobe.png")}
+              alt="wardrobe"
+            />
+            <span>PIMP WARDROBE</span>
+          </button>
+        </Link>
+        <img src="/img/clothes.jpg" alt="clothes" className="w-dvw"/>
+        <div className="text__wrapper text__wrapper__seventh"></div>
+      </div>
+      <div className="main main__eight">
+        <div className="faqHeader">ANY QUESTIONS LEFT?</div>
+        <div className="faqContainer">
+          {faqs.map((faq, index) => (
+            <div onClick={() => toggleFAQ(index)} className="faqItem" key={index}>
+              <h3 className="faqQuestion">
+                {faq.question}
+              </h3>
+              <p className={'faqAnswer ' + (openIndex !== index ? 'none' : 'faqShown')}>{faq.answer}</p>
+              {openIndex !== index ? <img src="/img/plus.png" alt="plus" /> : <img src="/img/close.png" alt="close" />}
+            </div>
+          ))}
+        </div>
+      </div>
+      <footer className="footer">
+          <div className="footer__left">
+          © 2024 PIMP. PIMPANZEE.
+          </div>
+          <div className="footer__center">
+            DISCLAIMER <br />
+            $PIMP WAS MADE FOR FUN AND HAS NO VALUE. DONT RISK MONEY YOU ARE AFRAID OF LOSING. THE PRICE MAY GO UP OR IT MAY GO DOWN. WE ARE NOT RESPONSIBLE FOR THE PRICE OF TOKEN
+          </div>
+          <div className="footer__right">
+            $PIMP ON SOLANA.
+          </div>
+      </footer>
+    </>
   );
 }
